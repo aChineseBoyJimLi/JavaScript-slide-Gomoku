@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>chess</title>
+	<link rel="stylesheet" type="text/css" href="css/chess.css">
+	<script type="text/javascript" src="js/chess.js"></script>
+</head>
+<body  onload="startLoad()">
+	<div>
+		<canvas width="780" id="canvas" onmousedown="play(event)" height="680" ></canvas>
+    <!-- <form id="game-mod">
+        <input type="radio" name='mod' id="first" checked="" value="1"> 玩家执黑先走</input><br>
+        <input type="radio" name='mod' id="second"  value="2"> 电脑执黑先走</input>  
+    </form> -->
+		 <div id="restart" onclick="isNewGame()">新开一局</div>
+	</div>
+</body>
+
+<!-- 绘制五子棋盘 -->
+<script>
+  canvas = document.getElementById("canvas");  
+  context = canvas.getContext("2d");  
+  context.fillStyle = '#FFA500';  
+  context.fillRect(140, 40, 640, 640);  
+  //棋盘纵横线  
+  for (var i = 1; i < 16; i++) {
+    context.beginPath();
+    context.moveTo(40 * i+140, 80);
+    context.lineTo(40 * i+140, 640);
+     context.moveTo(180, 40 * i+40);
+    context.lineTo(740, 40 * i+40);
+    context.closePath();
+    context.stroke();
+  }
+  
+  //绘制四个小点  
+  for(var i=0;i<2;i++){
+  	context.beginPath();
+  	context.arc(300,200+i*320,2.5,0,2*Math.PI);
+  	context.arc(620,200+i*320,2.5,0,2*Math.PI);
+  	context.closePath();
+  	context.stroke();
+  }
+</script>
+</html>
